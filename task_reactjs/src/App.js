@@ -96,11 +96,6 @@ class App extends React.Component {
 
   deleteLine(keyX){
     console.log(keyX);
-    const filteredItems = this.state.items.filter((item, key) =>
-      key!==keyX);
-    this.setState({
-      items: filteredItems
-    });
 
     const value = this.state.items[keyX];
     const uri = 'https://frontend-test.netbox.ru/?';
@@ -116,7 +111,11 @@ class App extends React.Component {
               responseColor: '#00A006',
               responseName: 'Строка удалена успешно'
           });
-          
+            const filteredItems = this.state.items.filter((item, key) =>
+                  key!==keyX);
+            this.setState({
+                items: filteredItems
+            });
         }).catch((error) => { 
               this.setState({
                 updateResponse: 'flex',
